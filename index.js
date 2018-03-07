@@ -18,14 +18,9 @@ class Driver {
     }
 
     passengers() {
-      const driverId = this.id
-      const trips = store.trips.filter(function (element) {
-        return element.driverId === driverId
+      return this.trip().map(trip => {
+        return trip.passenger
       })
-
-      const passengerIds = trips.map(element => element.passengerId)
-      return store.passengers.filter( function(e) {
-        return this.indexOf(e) < 0 }, passengerIds)
       }
 }
 
@@ -44,18 +39,11 @@ class Passenger {
   }
 
   drivers() {
-    const passengerId = this.id
-    const trips = store.trips.filter(function (element) {
-      return element.passengerId === passengerId
-    })
-
-    const driverIds = trips.map(element => element.driverId)
-
-    return store.drivers.filter( function(e) {
-      return this.indexOf(e) < 0 }, driverIds)
-    }
+    return this.trips().map(trip => {
+      return trip.driver()
+     })
   }
-
+}
 
 
 class Trip {
