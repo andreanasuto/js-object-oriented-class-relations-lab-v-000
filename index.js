@@ -20,7 +20,7 @@ class Driver {
     return store.passagers.filter(function(passanger) {
       return this.trips.filter(function(trip) {
         return this.id === trip.passangerId
-      }).bind(passanger)
+      }.bind(passanger))
     }).bind(this)
   }
 }
