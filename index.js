@@ -8,4 +8,10 @@ class Driver {
     this.id = ++driverId
     this.name = name
   }
+
+  trips () {
+    store.trips.filter(function(trip) {
+      this.driverId === driver.id
+    }).bind(this)
+  }
 }
