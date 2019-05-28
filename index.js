@@ -5,65 +5,61 @@ let store = {drivers: [], passengers: [], trips: []}
 
 class Driver {
   constructor(name) {
+    this.id = ++driverId
     this.name = name
-    this.id = driverId++
     store.drivers.push(this)
-    }
+  }
 
-    trips() {
-      const driverId = this.id
-      return store.trips.filter(function (element) {
-        return element.driverId === driverId
-      })
-    }
+  trips () {
+    return store.trips.filter(function(trip) {
+      return this.id === trip.driverId
+    }.bind(this))
+  }
 
-    passengers() {
-      return this.trip().map(trip => {
-        return trip.passenger
-      })
-      }
+  passengers () {
+    return this.trips().map(function(trip) {
+      return trip.passenger()
+    })
+  }
 }
 
 class Passenger {
   constructor(name) {
+    this.id = ++passagerId
     this.name = name
-    this.id = passagerId++
     store.passengers.push(this)
   }
 
   trips() {
-    const passengerId = this.id
-    return store.trips.filter(function (element) {
-      return element.passengerId === passengerId
-    })
+    return store.trips.filter(function(trip){
+      return this.id === trip.passengerId
+    }.bind(this))
   }
 
   drivers() {
-    return this.trips().map(trip => {
+    return this.trips().map(function(trip){
       return trip.driver()
-     })
+    })
   }
 }
-
 
 class Trip {
   constructor(driver, passenger) {
-    this.passengerId = passenger.id
+    this.id = ++tripId
     this.driverId = driver.id
-    this.id = tripId++
+    this.passengerId = passenger.id
     store.trips.push(this)
   }
+
   driver() {
-    const driverId = this.driverId
-    return store.drivers.find(function(element) {
-      return element.id === driverId
-    })
-  }
+    return store.drivers.find(function(driver){
+       return this.driverId === driver.id
+    }.bind(this))
+    }
 
   passenger() {
-    const passengerId = this.passengerId
-    return store.passengers.find(function (element) {
-      return element.id === passengerId
-    })
+    return store.passengers.find(function(passenger){
+      return this.passengerId === passenger.id
+    }.bind(this))
+    }
   }
-}
