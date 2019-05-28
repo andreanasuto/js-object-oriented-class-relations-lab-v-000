@@ -19,7 +19,7 @@ class Driver {
   passengers () {
     store.passagers.filter(function(passanger) {
       this.trips.filter(function(trip) {
-        this.tripId === trip.id
+        this.id === trip.passangerId
       }).bind(passanger)
     }).bind(this)
   }
@@ -40,7 +40,10 @@ class Passenger {
 
   drivers() {
     store.drivers.filter(function(driver){
-    })
+      this.trips.filter(function(trip) {
+        this.tripId === trip.id
+      }).bind(passanger)
+    }).bind(this)
   }
 }
 
