@@ -21,7 +21,7 @@ class Driver {
       return this.trips.filter(function(trip) {
         return this.id === trip.passangerId
       }.bind(passanger))
-    }).bind(this)
+    }.bind(this))
   }
 }
 
