@@ -14,4 +14,12 @@ class Driver {
       this.driverId === driver.id
     }).bind(this)
   }
+
+  passengers () {
+    store.passagers.filter(function(passanger) {
+      this.trips.forEach(function(trip) {
+        === passanger.id
+      })
+    }).bind(this)
+  }
 }
