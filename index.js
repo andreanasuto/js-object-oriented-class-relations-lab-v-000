@@ -34,7 +34,7 @@ class Passenger {
 
   trips() {
     return store.trips.filter(function(trip){
-      return this.id === trip.passagerId
+      return this.id === trip.passengerId
     }.bind(this))
   }
 
@@ -49,7 +49,7 @@ class Trip {
   constructor(driver, passenger) {
     this.id = ++tripId
     this.driverId = driver.id
-    this.passagerId = passenger.id
+    this.passengerId = passenger.id
     store.trips.push(this)
   }
 
