@@ -40,7 +40,7 @@ class Passenger {
 
   drivers() {
     return this.trips.filter(function(trip){
-      trip.driver()
+      return trip.driver()
     })
   }
 }
