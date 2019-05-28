@@ -40,11 +40,7 @@ class Passenger {
 
   drivers() {
     store.drivers.filter(function(driver){
-
-    }).bind(this)
-    store.trips.filter(function(trip){
-
-    }).bind(this)
+    })
   }
 }
 
