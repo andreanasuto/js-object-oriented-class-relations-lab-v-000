@@ -43,7 +43,7 @@ class Passenger {
       return this.trips.filter(function(trip) {
         return this.tripId === trip.id
       }.bind(passanger))
-    }).bind(this)
+    }.bind(this))
   }
 }
 
