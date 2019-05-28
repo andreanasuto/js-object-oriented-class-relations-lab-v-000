@@ -17,9 +17,15 @@ class Driver {
 
   passengers () {
     store.passagers.filter(function(passanger) {
-      this.trips.forEach(function(trip) {
-        === passanger.id
-      })
+      this.trips.filter(function(trip) {
+        this.tripId === trip.id
+      }).bind(passanger)
     }).bind(this)
+  }
+}
+
+class Trip {
+  constructor(driver,passenger) {
+
   }
 }
