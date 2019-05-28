@@ -42,7 +42,7 @@ class Passenger {
     return store.drivers.filter(function(driver){
       return this.trips.filter(function(trip) {
         return this.tripId === trip.id
-      }).bind(passanger)
+      }.bind(passanger))
     }).bind(this)
   }
 }
